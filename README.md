@@ -29,3 +29,9 @@ npm install
 ```bash
 npm run dev
 ```
+
+- Build a docker image:
+
+```bash
+build . -t test
+```
