@@ -37,8 +37,8 @@ const Home: NextPage = () => {
   const [body, setBody] = useState<JSX.Element>(<></>);
   const [isLiked, setIsLiked] = useState<boolean>();
 
-  const updateUserList = (newPage: number) => {
-    fetch(buildRequestToGetUsers(newPage, 10))
+  const updateUserList = (id: string, newPage: number) => {
+    fetch(buildRequestToGetUsers(newPage, 10, id))
       .then((result) => result.json())
       .then((data: ListResponse<UserPreview>) => {
         setUsers(_.uniq(users.concat(data.data), function (object) {
@@ -131,7 +131,9 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    updateUserList(page);
+
+    const user = window && window.localStorage.getItem('user');
+    updateUserList(user && JSON.parse(user).id, page);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
@@ -180,7 +182,9 @@ const Home: NextPage = () => {
   }, [viewedUsers, viewedUser]);
 
   const handleNextClick = () => {
-    if (viewedUserIndex + 2 === users.length) {
+    console.log('handleNextClick viewedUserIndex: ', viewedUserIndex);
+    console.log('handleNextClick users.length: ', users.length);
+    if (viewedUserIndex + 3 >= users.length) {
       if (users.length < numberOfUsers) {
         setPage(page + 1);
       } else {
@@ -233,7 +237,7 @@ const Home: NextPage = () => {
     if (isLoading || viewedUser === undefined) {
       setBody(<>Loading ...</>);
     } else if (isLoading === false && typeof viewedUser === 'object' && viewedUser.id === 'NULL') {
-      setBody(<>An error is happening. Please try the website later.</>);
+      setBody(<>No user left.</>);
     } else {
       setBody(<User
         userInfo={viewedUser}

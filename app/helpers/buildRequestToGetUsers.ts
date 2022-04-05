@@ -1,4 +1,4 @@
-const buildRequestToGetUsers = (page: number, limit: number): Request => {
+const buildRequestToGetUsers = (page: number, limit: number, id?: string): Request => {
   if (page < 0) {
     page = 0;
   }
@@ -7,7 +7,7 @@ const buildRequestToGetUsers = (page: number, limit: number): Request => {
     limit = 10;
   }
 
-  const url = `api/users?limit=${ limit }&page=${ page }`;
+  const url = `api/users?limit=${ limit }&page=${ page }&notview=yes${id ? '&id=' + id : ''}`;
 
   return new Request(url, {
     method: 'GET',

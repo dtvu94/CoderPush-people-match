@@ -84,6 +84,51 @@ body {
   border-radius: 10px;
 }
 
+.list-btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 40px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.list-user {
+  width: 100%;
+  height: calc(100% - 50px);
+  display: block;
+  position: relative;
+  overflow: auto;
+}
+
+.list-user__table,
+.list-user__table tbody {
+  width: 100%;
+}
+
+.list-user__table td {
+  width: 50%;
+  text-align: center;
+  padding: 10px;
+}
+
+.list-user__table-image {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 100px;
+}
+
+.list-user__table-text {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+}
+
 @media only screen and (min-width: 768px) {
   .main {
     width: 100%;
@@ -121,6 +166,33 @@ body {
     height: 40px;
     border-radius: 10px;
   }
+
+  .list-btn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    text-align: center;
+    border-radius: 10px;
+  }
+
+  .list-user {
+    width: 100%;
+    height: calc(100% - 60px);
+    display: block;
+    position: relative;
+    overflow: auto;
+  }
+
+  .list-user__table-text {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -149,6 +221,18 @@ body {
     position: relative;
     display: block;
     border: 1px solid black;
+  }
+
+  .list-btn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    text-align: center;
+    border-radius: 10px;
   }
 }
 
@@ -179,6 +263,18 @@ body {
     display: block;
     border: 1px solid black;
   }
+
+  .list-btn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    text-align: center;
+    border-radius: 10px;
+  }
 }
 
 @media only screen and (min-width: 1920px) {
@@ -207,5 +303,17 @@ body {
     position: relative;
     display: block;
     border: 1px solid black;
+  }
+
+  .list-btn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    text-align: center;
+    border-radius: 10px;
   }
 }

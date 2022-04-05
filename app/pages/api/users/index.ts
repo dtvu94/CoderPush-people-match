@@ -15,7 +15,7 @@ export default async function handler(
   if (req.method === 'GET') {
     const { page, limit } = parsePageAndLimitFromRequest(req.query.page, req.query.limit);
 
-    const response = await getUsers(page, limit);
+    const response = await getUsers(page, limit, req.query.notview, req.query.id);
 
     res.status(200).json(response);
 

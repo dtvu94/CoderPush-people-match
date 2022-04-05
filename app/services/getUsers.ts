@@ -4,10 +4,14 @@ import UserPreview from '../definitions/UserPreview';
 import ListResponse from '../definitions/ListResponse';
 import pool from '../helpers/getPgPool';
 
-const getUsers = async (page: number, limit: number): Promise<ListResponse<UserPreview>> => {
-  const query = 'SELECT id, title, first_name, last_name, picture, COUNT(*) OVER() AS full_count' +
-    ' FROM Users' +
-    ' ORDER BY id ASC' +
+const getUsers = async (page: number, limit: number, notView: any, id: any): Promise<ListResponse<UserPreview>> => {
+  let query = 'SELECT id, title, first_name, last_name, picture, COUNT(*) OVER() AS full_count' +
+    ' FROM Users';
+  if (notView && id) {
+    query += ` WHERE NOT EXISTS (SELECT * FROM ViewedUsers WHERE ViewedUsers.user_id='${id}' AND ViewedUsers.viewed_user_id=Users.id)`
+  }
+
+  query += ' ORDER BY id ASC' +
     ` LIMIT ${ limit } OFFSET ${page * limit}`;
 
   console.debug('getUsers query: ', query);

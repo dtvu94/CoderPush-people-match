@@ -4,7 +4,12 @@ import ViewedUser from '../definitions/ViewedUser';
 import ListResponse from '../definitions/ListResponse';
 import pool from '../helpers/getPgPool';
 
-const getViewedUsers = async (page: number, limit: number, userId: string | undefined, viewedUserId: string | undefined): Promise<ListResponse<ViewedUser>> => {
+const getViewedUsers = async (
+  page: number,
+  limit: number,
+  userId: string | undefined,
+  viewedUserId: string | undefined,
+): Promise<ListResponse<ViewedUser>> => {
   let query = 'SELECT id, user_id, viewed_user_id, is_like, COUNT(*) OVER() AS full_count FROM ViewedUsers';
 
   if (userId && viewedUserId) {
