@@ -5,6 +5,7 @@ const nextConfig = {
     domains: ['randomuser.me'],
   },
   productionBrowserSourceMaps: true,
+  swcMinify: false,
 }
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({

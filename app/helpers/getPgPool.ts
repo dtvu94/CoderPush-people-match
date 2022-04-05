@@ -2,7 +2,7 @@ import { Pool } from 'pg';
 
 const pool = new Pool({
   user: 'sa',
-  host: 'localhost',
+  host: '0.0.0.0',
   database: 'peoplematch',
   password: 'admin',
   port: 5432,
