@@ -35,7 +35,6 @@ export default async function handler(
 
       res.status(200).json({
         data: viewedUsers.map((x) => {
-          console.log('x: ', x);
           const retrievedUser = users.find((u) => u.id === x.id);
 
           if (!retrievedUser) {
