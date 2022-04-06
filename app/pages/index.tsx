@@ -153,7 +153,10 @@ const Home: NextPage = () => {
     setLoading(true);
     updateViewedUser(users[viewedUserIndex].id);
     const user = window && window.localStorage.getItem('user');
-    updateViewedUsers(user && JSON.parse(user).id, users[viewedUserIndex].id);
+
+    if (user) {
+      updateViewedUsers(JSON.parse(user).id, users[viewedUserIndex].id);
+    }
 
     if (viewedUserIndex === 0) {
       setHasBack(false);
